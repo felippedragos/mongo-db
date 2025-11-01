@@ -1,0 +1,106 @@
+//O mongo em si, o banco de dados 
+mongod
+//O client mongo
+mongo
+//Iniciar o mongod e definir um diretorio
+mongod --dbpath ./data/db
+//Mongo Ajuda 
+mongod --help
+//Mostrar todos os dbs
+show dbs
+//Limpar o mongosh
+cls ou ctrl +L
+
+//Usar o db selecionado
+use Teste 	
+//Listar o conteudo do banco de dados
+db.Teste.find()
+
+// fork - libera o terminal 
+// logpath definir um diretório para gravar o log 
+mongod --dbpath ./mongo-data --fork 
+mongod --dbpath ./mongo-data --fork --logpath ./mongo.log
+
+DB 
+Collection = Tabela
+Documents = Linha/Registro
+
+CRUD
+
+- Create
+db.minhaCollection.insert({"Valor": 123})
+db.minhaCollection.insertOne({})
+db.minhaCollection.insertMany([{}, {}])
+
+- Insert
+1 registro   - WriteResult
++2 registros - BulkWriteResult
+
+//
+WriteConcern - {parametros de properties}
+//Usado para inserir de forma ordenada ou não
+Ordered: <boolean> 
+//false - mesmo com erro em algum dos inserts ele continua inserindo os proximos
+//por padrão é definido true 
+db.minhaCollection.insertMany([{_id: 1 , Valor: 1}, {_id: 4, Valor: 2}], {ordered: false})
+
+- Read
+db.minhaCollection.find()
+db.minhaCollection.find().pretty()
+db.minhaCollection.findOne()
+
+- Update
+db.minhaCollection.update()
+db.minhaCollection.updateOne()
+db.minhaCollection.updateMany()
+
+- Delete
+db.minhaCollection.deleteOne()
+db.minhaCollection.deleteMany()
+
+
+Types
+
+
+BSON -BINARY JSON
+
+String  
+Symbol  
+Binary Data: Foto
+Number: Double, Int32, Int64, Decimal128
+Data: Date, Timestamp 
+Boolean
+null
+Array
+object
+Regular Expression
+JavaScript Code
+JavaScript Code with Scope
+MinKey-MaxKey 
+Undefined
+ObjectId - 12 bytes (geralmente auto gerado pelo driver)
+
+4 bytes timestamp 
+5 bytes valor ramdomico
+3 bytes valor incremental 
+
+
+//Retorna o timestamp do Object ID
+db.alunos.findOne()._id.getTimestamp()
+
+
+
+LINUX
+ 
+//Abre as logs
+cat file.log
+//Mostra as ultimas 10 linhas de log
+tail file.log 
+//O mesmo só que com o numero de linhas 
+tail mongo -n 5
+//Mostras as logs de forma dinamica
+tail mongo -f
+
+
+
+PROXIMA AULA 28
